@@ -1,0 +1,7 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth-middleware
+spec:
+  forwardAuth:
+    address: http://auth-service.frontend:7001/api/auth/auth 

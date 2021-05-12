@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: auth-ingress-route
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`localhost`) && PathPrefix(`/api/auth`)
+    kind: Rule
+    priority: 2
+    services:
+    - name: auth-service
+      namespace: frontend
+      port: 7001

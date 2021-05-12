@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: k3d-mycluster-registry:55488/auth-example-auth
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+

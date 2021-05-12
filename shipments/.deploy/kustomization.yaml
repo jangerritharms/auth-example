@@ -1,0 +1,6 @@
+namespace: frontend
+resources:
+  - deployment.yaml
+  - middleware.yaml
+  - service.yaml
+  - ingressroutes.yaml

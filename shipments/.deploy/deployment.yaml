@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shipments
+  template:
+    metadata:
+      labels:
+        app: shipments
+    spec:
+      containers:
+        - name: shipments
+          image: k3d-mycluster-registry:55488/auth-example-shipments
+          ports:
+            - containerPort: 8081
+          imagePullPolicy: Always
+
+

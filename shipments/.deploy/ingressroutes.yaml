@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: shipments-ingress-route
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`localhost`) && PathPrefix(`/api/shipments`)
+    kind: Rule
+    services:
+    - name: shipments-service
+      namespace: frontend
+      port: 7002
+    middlewares:
+      - name: auth-middleware
